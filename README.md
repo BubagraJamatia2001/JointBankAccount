@@ -2,6 +2,11 @@
 
 This project was made with the help of BlockchainExpert course from Algoexpert taught by Tim Ruscica. 
 
+- This project offers a smart contract for creating joint bank account. Each Account can have a maximum of 4 owners and each owner can have a maximum of 3 accounts in this bank. 
+- Each owner can deposit any amount of funds in their account.
+- For withdrawal of funds, the account owners, other than the creator of the request, must approve the withdrawal request for the creator to withdraw funds.
+- The project is accompanied by automated test cases and a minimal front-end application for interacting with some contract functionalities.
+
 ## Getting Started
 To test and deploy the smart contract, follow the steps as given below:
 1. Install [Node.js](https://nodejs.org/en/download/)
