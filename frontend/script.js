@@ -15,7 +15,7 @@ const abi = [
   "function withdraw(uint256 accountId, uint256 withdrawId)",
 ];
 
-const address = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+const address = "0x5FbDB2315678afecb367f032d93F642f64180aa3"; //Address of the contract
 let contract = null;
 
 async function createAccount() {

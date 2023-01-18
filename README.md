@@ -25,3 +25,15 @@ Run the above two commands in separate terminals
 3. Start the liveserver by clickin "Go Live" button in the bottom right hand corner of your VSCode
 4. Import any accounts as required into the MataMask and change your metamask network to "Hardhat"
 5. Interact with the contract
+
+## Following Functionalities to add
+- [x] createAccount
+- [] requestWithdrawl
+- [] deposit
+- [x] getAccounts
+- [] getApprovals
+- [] getBalance
+- [] getOwners
+- [] approveWithdrawl
+- [] withdraw
+

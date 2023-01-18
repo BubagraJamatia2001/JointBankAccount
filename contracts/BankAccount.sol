@@ -74,7 +74,7 @@ contract BankAccount {
     }
 
     modifier sufficientBalance(uint256 accountId, uint256 amount) {
-        //Checks if the Account has sufficient balance to withdraw amount
+        //Checks if the Account has sufficient balance to withdraw funds
         require(accounts[accountId].balance >= amount, "Insufficient Balance");
         _;
     }
@@ -103,6 +103,7 @@ contract BankAccount {
     }
 
     modifier canWithdraw(uint256 accountId, uint256 withdrawId) {
+        // Checks if the use is allowed to withdraw funds 
         require(
             accounts[accountId].withdrawRequests[withdrawId].user == msg.sender,
             "The current user is not the owner of this request or this request has been completed"
@@ -118,14 +119,14 @@ contract BankAccount {
         external
         payable
         accountOwner(accountId)
-    {
+    { //Allows the user to deposit funds to an account upon verification
         accounts[accountId].balance += msg.value;
     }
 
     function createAccount(address[] calldata otherOwners)
         external
         validOwner(otherOwners)
-    {
+    {   //Allows the user to create an Account with/without other owners
         address[] memory owners = new address[](otherOwners.length + 1);
         owners[otherOwners.length] = msg.sender;
 
@@ -174,7 +175,8 @@ contract BankAccount {
         external
         accountOwner(accountId)
         canApprove(accountId, withdrawId)
-    {
+    {   //Allows the owner of an account to approve the withdraw request 
+        //provided the owner is not the creator of the withdraw request
         WithdrawRequest storage request = accounts[accountId].withdrawRequests[
             withdrawId
         ];
@@ -189,7 +191,7 @@ contract BankAccount {
     function withdraw(uint256 accountId, uint256 withdrawId)
         external
         canWithdraw(accountId, withdrawId)
-    {
+    {   // Allows the creator of the withdraw request to withdraw funds from the account
         uint256 amount = accounts[accountId]
             .withdrawRequests[withdrawId]
             .amount;
@@ -205,6 +207,7 @@ contract BankAccount {
     }
 
     function getBalance(uint256 accountId) public view returns (uint256) {
+        //Shows the balance of the account
         return accounts[accountId].balance;
     }
 
@@ -212,7 +215,7 @@ contract BankAccount {
         public
         view
         returns (address[] memory)
-    {
+    {   //Provides a list of the owner(s) address belonging to an account
         return accounts[accountId].owners;
     }
 
@@ -220,11 +223,12 @@ contract BankAccount {
         public
         view
         returns (uint256)
-    {
+    {   //Shows the count of approvals given to a withddraw request
         return accounts[accountId].withdrawRequests[withdrawId].approvals;
     }
 
     function getAccounts() public view returns (uint256[] memory) {
+        //Provides the accountID of the accounts the user have with them
         return userAccount[msg.sender];
     }
 }
