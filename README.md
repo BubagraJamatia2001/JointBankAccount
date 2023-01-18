@@ -28,12 +28,12 @@ Run the above two commands in separate terminals
 
 ## Following Functionalities to add
 - [x] createAccount
-- [] requestWithdrawl
-- [] deposit
+- [ ] requestWithdrawl
+- [ ] deposit
 - [x] getAccounts
-- [] getApprovals
-- [] getBalance
-- [] getOwners
-- [] approveWithdrawl
-- [] withdraw
+- [ ] getApprovals
+- [ ] getBalance
+- [ ] getOwners
+- [ ] approveWithdrawl
+- [ ] withdraw
 
